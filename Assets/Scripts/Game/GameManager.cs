@@ -9,6 +9,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int scorePerBox;
 
+    static public GameManager instanceGameManager;
+    static public GameManager Instance { get { return instanceGameManager; } }
+
+    private void Awake()
+    {
+        if (instanceGameManager != this || instanceGameManager != null)
+            Destroy(this.gameObject);
+        else
+            instanceGameManager = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
