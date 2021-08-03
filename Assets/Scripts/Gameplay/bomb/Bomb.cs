@@ -26,5 +26,7 @@ public class Bomb : MonoBehaviour
             alreadyCollision = true;
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "terrain")
+            Destroy(gameObject);
     }
 }

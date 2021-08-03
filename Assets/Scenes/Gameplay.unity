@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  time: 10
+  time: 70
   destroyedBoxes: 0
   distance: 0
   player: {fileID: 2074062615}
@@ -2575,7 +2575,7 @@ GameObject:
   - component: {fileID: 1779538971}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

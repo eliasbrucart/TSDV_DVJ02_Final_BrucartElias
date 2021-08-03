@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     static public GameManager Instance { get { return instanceGameManager; } }
 
     private ScenesManager sc;
+    private int maxScore = 200;
 
     private void Awake()
     {
@@ -22,7 +23,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             instanceGameManager = this;
-        //DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckGameOver()
     {
-        if (OutOfTime())
+        if (OutOfTime() || score >= maxScore)
             sc.ChangeScene("GameOver");
     }
 
