@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     private float horizontal;
     private float vertical;
 
+    public float distanceTraveled;
+
     void Start()
     {
         cam = Camera.main;
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour
     {
         transform.Rotate(0.0f, horizontal * Time.deltaTime * rotationSpeed, 0.0f);
         transform.Translate(0.0f, 0.0f, vertical * Time.deltaTime * speed);
+
+        distanceTraveled = distanceTraveled + speed * Time.deltaTime;
 
         RaycastHit hitInfo;
         if (Physics.Raycast(transform.position, -transform.up, out hitInfo))

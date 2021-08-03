@@ -17,6 +17,6 @@ public class UIGameOver : MonoBehaviour
     {
         scoreText.text = "Score: " + gm.score;
         destroyedBoxesText.text = "Destroyed Boxes: " + gm.destroyedBoxes;
-        distanceText.text = "Tank distance traveled: " + gm.distance;
+        distanceText.text = "Tank distance traveled: " + gm.distance.ToString("F0");
     }
 }

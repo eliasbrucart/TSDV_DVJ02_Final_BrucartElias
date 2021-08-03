@@ -1888,9 +1888,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  time: 100
+  time: 10
   destroyedBoxes: 0
   distance: 0
+  player: {fileID: 2074062615}
   scorePerBox: 10
 --- !u!4 &1164838809 stripped
 Transform:

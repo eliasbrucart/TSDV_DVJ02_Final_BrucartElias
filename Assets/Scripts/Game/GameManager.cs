@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             instanceGameManager = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time -= Time.deltaTime;
-        OutOfTime();
+        distance = player.distanceTraveled;
+        CheckGameOver();
     }
 
     private void AddScore()
@@ -48,10 +49,20 @@ public class GameManager : MonoBehaviour
         destroyedBoxes++;
     }
 
-    private void OutOfTime()
+    private bool OutOfTime()
     {
         if (time <= 0.0f)
-            time = 0.0f;
+        {
+            return true;
+        }
+        return false;
+
+    }
+
+    private void CheckGameOver()
+    {
+        if (OutOfTime())
+            sc.ChangeScene("GameOver");
     }
 
     private void OnDisable()
