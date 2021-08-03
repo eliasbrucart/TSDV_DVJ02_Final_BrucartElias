@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Bomb.CollisionWithBox += AddScore;
+        Bomb.CollisionWithBox += IncreaseDestroyedBoxes;
         sc = ScenesManager.instanceScenesManager;
     }
 
@@ -40,6 +41,11 @@ public class GameManager : MonoBehaviour
         score += scorePerBox;
     }
 
+    private void IncreaseDestroyedBoxes()
+    {
+        destroyedBoxes++;
+    }
+
     private void OutOfTime()
     {
         if (time <= 0.0f)
@@ -49,5 +55,6 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         Bomb.CollisionWithBox -= AddScore;
+        Bomb.CollisionWithBox -= IncreaseDestroyedBoxes;
     }
 }
