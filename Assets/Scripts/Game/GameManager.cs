@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     static public GameManager instanceGameManager;
     static public GameManager Instance { get { return instanceGameManager; } }
 
+    private ScenesManager sc;
+
     private void Awake()
     {
         if (instanceGameManager != this || instanceGameManager != null)
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Bomb.CollisionWithBox += AddScore;
+        sc = ScenesManager.instanceScenesManager;
     }
 
     void Update()
