@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private float distanceCamRay;
     [SerializeField] private GameObject bombPrefab;
-    [SerializeField] private Vector3 bombOffset;
+    [SerializeField] private GameObject barrel;
 
     private Vector3 mousePos;
     private float maxTimeAnim = 0.5f;
@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     private BoxCollider colliderTank;
     private float halfHeight;
 
-    public static event Action ShootEvent;
     void Start()
     {
         cam = Camera.main;
@@ -62,11 +61,8 @@ public class Player : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, distanceCamRay))
             {
-                Debug.Log("Dio click en: " + hit.point);
                 StartCoroutine(RotateTower(hit));
-                //bombPrefab.transform.rotation = Quaternion.Euler(0.0f, 0.0f, tower.rotation.z);
-                Instantiate(bombPrefab, tower.position, new Quaternion(0.0f, 0.0f, tower.rotation.z, tower.rotation.w));
-                ShootEvent?.Invoke();
+                Instantiate(bombPrefab, barrel.transform.position, tower.rotation);
             }
         }
     }
@@ -80,11 +76,6 @@ public class Player : MonoBehaviour
             Vector3 targetDirection = (hit.point - tower.position).normalized;
             targetRotation = Quaternion.LookRotation(targetDirection);
             tower.rotation = Quaternion.SlerpUnclamped(tower.rotation, targetRotation, towerSpeed);
-            //Instantiate(bombPrefab, tower.position, tower.rotation);
-            Quaternion targetRotationBomb = Quaternion.identity;
-            Vector3 targetDirectionBomb = (hit.point - tower.position).normalized;
-            targetRotationBomb = Quaternion.LookRotation(targetDirectionBomb);
-            bombPrefab.transform.rotation = Quaternion.SlerpUnclamped(bombPrefab.transform.rotation, targetRotationBomb, towerSpeed);
             yield return null;
         }
         timerAnim = 0;
