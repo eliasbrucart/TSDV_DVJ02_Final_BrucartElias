@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public int destroyedBoxes;
     public float distance;
 
+    public Player player;
+
     [SerializeField] private int scorePerBox;
 
     static public GameManager instanceGameManager;
