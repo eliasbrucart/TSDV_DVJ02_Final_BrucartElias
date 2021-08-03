@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     private BoxCollider colliderTank;
     private float halfHeight;
+    private float horizontal;
+    private float vertical;
 
     void Start()
     {
@@ -29,18 +31,16 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+        if (horizontal != 0 || vertical != 0)
+            MovePlayer();
         Shoot();
     }
 
     private void MovePlayer()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
         transform.Rotate(0.0f, horizontal * Time.deltaTime * rotationSpeed, 0.0f);
-        //chasis.rotation = Quaternion.LookRotation(Vector3.right);
-        //transform.Translate(Vector3.forward * Time.deltaTime * speed * vertical);
         transform.Translate(0.0f, 0.0f, vertical * Time.deltaTime * speed);
 
         RaycastHit hitInfo;
