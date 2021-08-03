@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instanceGameManager != this || instanceGameManager != null)
+        if (instanceGameManager != this && instanceGameManager != null)
             Destroy(this.gameObject);
         else
             instanceGameManager = this;
