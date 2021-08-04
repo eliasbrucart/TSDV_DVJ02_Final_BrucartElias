@@ -1304,6 +1304,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 809419271, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: distanceCamRay
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 809419273, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_Enabled
       value: 1

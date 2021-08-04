@@ -66,7 +66,6 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(ray, out hit, distanceCamRay))
             {
                 StartCoroutine(RotateTower(hit));
-                Instantiate(bombPrefab, barrel.transform.position, tower.rotation);
             }
         }
     }
@@ -82,6 +81,7 @@ public class Player : MonoBehaviour
             tower.rotation = Quaternion.SlerpUnclamped(tower.rotation, targetRotation, towerSpeed);
             yield return null;
         }
+        Instantiate(bombPrefab, barrel.transform.position, tower.rotation);
         timerAnim = 0;
     }
 }
