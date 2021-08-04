@@ -10,12 +10,12 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         transform.position = player.transform.position + offset;
-        transform.LookAt(player.transform.position);
     }
 
     private void LateUpdate()
     {
         float distance = Vector3.Distance(player.transform.position + offset, transform.position);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position + offset, (cameraSpeed * distance) * Time.deltaTime);
+        transform.LookAt(transform.position, player.transform.position);
     }
 }
